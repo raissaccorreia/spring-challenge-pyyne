@@ -1,20 +1,14 @@
 package com.hiring.api.pyyne.hiringdemo.models;
 
 public class Kvt {
-  private String key;
-  private String value;
+  private String content;
   private int ttl;
   private long stamp;
 
-  public Kvt(String key, String value, int ttl, long stamp) {
-    this.key = key;
-    this.value = value;
+  public Kvt(String content, int ttl, long stamp) {
+    this.content = content;
     this.ttl = ttl;
     this.stamp = stamp;
-  }
-
-  public boolean isMe(String key) {
-    return this.key == key;
   }
 
   public boolean isExpired() {
@@ -27,20 +21,12 @@ public class Kvt {
     return false;
   }
 
-  public String getKey() {
-    return key;
+  public String getContent() {
+    return content;
   }
 
-  public void setKey(String key) {
-    this.key = key;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  public void setValue(String value) {
-    this.value = value;
+  public void setContent(String Content) {
+    this.content = Content;
   }
 
   public int getttl() {

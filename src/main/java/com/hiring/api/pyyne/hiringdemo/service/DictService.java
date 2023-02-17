@@ -1,7 +1,6 @@
 package com.hiring.api.pyyne.hiringdemo.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Service;
 
@@ -10,23 +9,24 @@ import com.hiring.api.pyyne.hiringdemo.models.Kvt;
 @Service
 public class DictService {
 
-  private List<Kvt> kvtList = new ArrayList<Kvt>();
+  private ConcurrentHashMap<String, Kvt> dict = new ConcurrentHashMap<String, Kvt>();
 
   public String getDict(String word) {
-    for (int i = 0; i < kvtList.size(); i++) {
-      Kvt element = kvtList.get(i);
-      if (element.getKey().equals(word) && !element.isExpired()) {
-        return element.getValue();
+    try {
+      if (dict.get(word).isExpired()) {
+        dict.remove(word);
       }
+      return dict.get(word).getContent();
+    } catch (Exception e) {
+      return "";
     }
-    return "";
   }
 
   public boolean addToDict(String key, String value, int ttl) {
     try {
       long now = System.currentTimeMillis();
-      Kvt newElement = new Kvt(key, value, ttl, now);
-      kvtList.add(newElement);
+      Kvt newElement = new Kvt(value, ttl, now);
+      dict.put(key, newElement);
       return true;
     } catch (Exception e) {
       return false;
@@ -35,14 +35,8 @@ public class DictService {
 
   public boolean deleteFromDict(String word) {
     try {
-      for (int i = 0; i < kvtList.size(); i++) {
-        Kvt element = kvtList.get(i);
-        if (element.getKey().equals(word)) {
-          kvtList.remove(i);
-          return true;
-        }
-      }
-      return false;
+      dict.remove(word);
+      return true;
     } catch (Exception e) {
       return false;
     }
