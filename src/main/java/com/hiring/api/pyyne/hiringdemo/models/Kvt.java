@@ -1,12 +1,12 @@
 package com.hiring.api.pyyne.hiringdemo.models;
 
-public class kvt {
+public class Kvt {
   private String key;
   private String value;
   private int ttl;
   private long stamp;
 
-  public kvt(String key, String value, int ttl, long stamp) {
+  public Kvt(String key, String value, int ttl, long stamp) {
     this.key = key;
     this.value = value;
     this.ttl = ttl;

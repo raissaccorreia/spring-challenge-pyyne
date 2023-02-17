@@ -1,10 +1,10 @@
 package com.hiring.api.pyyne.hiringdemo.models;
 
-public class node {
+public class Node {
   private String content;
-  private node prev;
+  private Node prev;
 
-  public node(String content, node prev) {
+  public Node(String content, Node prev) {
     this.content = content;
     this.prev = prev;
   }
@@ -17,11 +17,11 @@ public class node {
     this.content = content;
   }
 
-  public node getPrev() {
+  public Node getPrev() {
     return prev;
   }
 
-  public void setPrev(node prev) {
+  public void setPrev(Node prev) {
     this.prev = prev;
   }
 
