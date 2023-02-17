@@ -1,31 +1,31 @@
 package com.hiring.api.pyyne.hiringdemo.service;
 
-import java.util.Stack;
-
-// import org.springframework.http.HttpStatus;
-// import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import com.hiring.api.pyyne.hiringdemo.models.node;
 
 @Service
 public class LifoService {
 
-  Stack<String> arr = new Stack<String>();
+  node TopOfStack = null;
 
   public String getLifo() {
-    if (arr.empty()) {
-      System.out.println("STACK EMPTY");
+    if (TopOfStack != null) {
+      String answer = TopOfStack.getContent();
+      TopOfStack = TopOfStack.getPrev();
+      return answer;
     } else {
-      return arr.pop();
+      return "empty stack";
     }
-    return null;
   }
 
-  public boolean addToLifo(String word) {
+  public String addToLifo(String word) {
     try {
-      arr.push(word);
-      return true;
+      node NewNode = new node(word, TopOfStack);
+      TopOfStack = NewNode;
+      return NewNode.getContent();
     } catch (Exception e) {
-      return false;
+      return "fail to add new node";
     }
   }
 }

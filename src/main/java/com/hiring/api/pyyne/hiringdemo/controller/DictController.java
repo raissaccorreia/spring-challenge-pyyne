@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hiring.api.pyyne.hiringdemo.service.DictService;
-// import org.springframework.http.HttpStatus;
-// import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/dict")

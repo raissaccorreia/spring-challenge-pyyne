@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hiring.api.pyyne.hiringdemo.service.LifoService;
-// import org.springframework.http.HttpStatus;
-// import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/lifo")
@@ -26,7 +24,7 @@ public class LifoController {
   }
 
   @PutMapping("")
-  public boolean addToLifo(@RequestParam(value = "word", required = true) String word) {
+  public String addToLifo(@RequestParam(value = "word", required = true) String word) {
     return lifoService.addToLifo(word);
   }
 }
