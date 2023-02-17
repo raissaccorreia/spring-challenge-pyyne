@@ -3,6 +3,7 @@ package com.hiring.api.pyyne.hiringdemo.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hiring.api.pyyne.hiringdemo.service.LifoService;
@@ -25,7 +26,7 @@ public class LifoController {
   }
 
   @PutMapping("")
-  public boolean addToLifo(String word) {
+  public boolean addToLifo(@RequestParam(value = "word", required = true) String word) {
     return lifoService.addToLifo(word);
   }
 }

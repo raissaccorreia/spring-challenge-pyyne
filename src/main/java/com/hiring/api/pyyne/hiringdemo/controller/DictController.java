@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hiring.api.pyyne.hiringdemo.service.DictService;
@@ -21,17 +22,19 @@ public class DictController {
   }
 
   @GetMapping("")
-  public String getDict() {
-    return dictService.getDict();
+  public String getDict(@RequestParam(value = "word", required = true) String word) {
+    return dictService.getDict(word);
   }
 
   @PutMapping("")
-  public boolean addToDict(String word) {
-    return dictService.addToDict(word);
+  public boolean addToDict(
+      @RequestParam(value = "key", required = true) String key,
+      @RequestParam(value = "value", required = true) String value) {
+    return dictService.addToDict(key, value);
   }
 
   @DeleteMapping("")
-  public boolean deleteFromDict(String word) {
+  public boolean deleteFromDict(@RequestParam(value = "word", required = true) String word) {
     return dictService.deleteFromDict(word);
   }
 }

@@ -1,5 +1,7 @@
 package com.hiring.api.pyyne.hiringdemo.service;
 
+import java.util.HashMap;
+
 // import org.springframework.http.HttpStatus;
 // import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -7,22 +9,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class DictService {
 
-  public String getDict() {
-    return "hello, get dict!";
+  HashMap<String, String> kvList = new HashMap<>();
+
+  public String getDict(String word) {
+    return kvList.get(word);
   }
 
-  public boolean addToDict(String word) {
-    if (word.length() >= 1)
+  public boolean addToDict(String key, String value) {
+    try {
+      kvList.put(key, value);
       return true;
-    else
+    } catch (Exception e) {
       return false;
+    }
   }
 
   public boolean deleteFromDict(String word) {
-    if (word.length() >= 1)
+    try {
+      kvList.remove(word);
       return true;
-    else
+    } catch (Exception e) {
       return false;
+    }
   }
 
 }
