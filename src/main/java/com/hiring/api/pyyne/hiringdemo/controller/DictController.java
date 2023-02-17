@@ -29,8 +29,9 @@ public class DictController {
   @PutMapping("")
   public boolean addToDict(
       @RequestParam(value = "key", required = true) String key,
-      @RequestParam(value = "value", required = true) String value) {
-    return dictService.addToDict(key, value);
+      @RequestParam(value = "value", required = true) String value,
+      @RequestParam(value = "ttl", defaultValue = "0", required = false) int ttl) {
+    return dictService.addToDict(key, value, ttl);
   }
 
   @DeleteMapping("")

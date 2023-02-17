@@ -1,0 +1,15 @@
+package com.hiring.api.pyyne.hiringdemo.utils;
+
+public class listNode {
+  private String key;
+}
+
+
+
+Node:
+ - String
+ - pointer to the prev Node
+
+ Pointer to the last/youngest = null
+
+pop

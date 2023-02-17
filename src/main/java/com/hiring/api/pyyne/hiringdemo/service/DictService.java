@@ -1,23 +1,33 @@
 package com.hiring.api.pyyne.hiringdemo.service;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
-// import org.springframework.http.HttpStatus;
-// import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import com.hiring.api.pyyne.hiringdemo.models.kvt;
 
 @Service
 public class DictService {
 
-  HashMap<String, String> kvList = new HashMap<>();
+  List<kvt> kvtList = new ArrayList<kvt>();
+  String key;
 
   public String getDict(String word) {
-    return kvList.get(word);
+    for (int i = 0; i < kvtList.size(); i++) {
+      kvt element = kvtList.get(i);
+      if (element.getKey().equals(word) && !element.isExpired()) {
+        return element.getValue();
+      }
+    }
+    return "";
   }
 
-  public boolean addToDict(String key, String value) {
+  public boolean addToDict(String key, String value, int ttl) {
     try {
-      kvList.put(key, value);
+      long now = System.currentTimeMillis();
+      kvt newElement = new kvt(key, value, ttl, now);
+      kvtList.add(newElement);
       return true;
     } catch (Exception e) {
       return false;
@@ -26,8 +36,14 @@ public class DictService {
 
   public boolean deleteFromDict(String word) {
     try {
-      kvList.remove(word);
-      return true;
+      for (int i = 0; i < kvtList.size(); i++) {
+        kvt element = kvtList.get(i);
+        if (element.getKey().equals(word)) {
+          kvtList.remove(i);
+          return true;
+        }
+      }
+      return false;
     } catch (Exception e) {
       return false;
     }
