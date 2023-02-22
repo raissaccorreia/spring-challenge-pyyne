@@ -13,3 +13,11 @@ Node:
  Pointer to the last/youngest = null
 
 pop
+
+February 22nd Notes
+
+Everything is doing fine, in terms of metting the assignment criteria
+
+ - It lacks HTTP formal request and JSON
+
+ - It lacks unit testing

@@ -21,19 +21,31 @@ public class DictController {
 
   @GetMapping("")
   public String getDict(@RequestParam(value = "word", required = true) String word) {
-    return dictService.getDict(word);
+    try {
+      return dictService.getDict(word);
+    } catch (Exception e) {
+        return "Error: " + e.getMessage();
+    }
   }
 
   @PutMapping("")
-  public boolean addToDict(
+  public String addToDict(
       @RequestParam(value = "key", required = true) String key,
       @RequestParam(value = "value", required = true) String value,
       @RequestParam(value = "ttl", defaultValue = "0", required = false) int ttl) {
-    return dictService.addToDict(key, value, ttl);
+    try {
+      return dictService.addToDict(key, value, ttl);
+    } catch (Exception e) {
+      return "Error: " + e.getMessage();
+    }
   }
 
   @DeleteMapping("")
-  public boolean deleteFromDict(@RequestParam(value = "word", required = true) String word) {
-    return dictService.deleteFromDict(word);
+  public String deleteFromDict(@RequestParam(value = "word", required = true) String word) {
+    try {
+      return dictService.deleteFromDict(word);
+    } catch (Exception e) {
+      return "Error: " + e.getMessage();
+    }
   }
 }

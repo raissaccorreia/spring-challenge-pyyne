@@ -20,11 +20,19 @@ public class LifoController {
 
   @GetMapping("")
   public String getLifo() {
-    return lifoService.getLifo();
+    try {
+      return lifoService.getLifo();
+    } catch (Exception e) {
+        return "Error: " + e.getMessage();
+    }
   }
 
   @PutMapping("")
   public String addToLifo(@RequestParam(value = "word", required = true) String word) {
-    return lifoService.addToLifo(word);
+    try {
+      return lifoService.addToLifo(word);
+    } catch (Exception e) {
+        return "Error: " + e.getMessage();
+    }
   }
 }

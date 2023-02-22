@@ -20,12 +20,8 @@ public class LifoService {
   }
 
   public String addToLifo(String word) {
-    try {
       Node newNode = new Node(word, topOfStack);
       topOfStack = newNode;
       return newNode.getContent();
-    } catch (Exception e) {
-      return "fail to add new node";
-    }
   }
 }
