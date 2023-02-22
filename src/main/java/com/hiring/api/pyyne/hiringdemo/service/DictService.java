@@ -35,7 +35,7 @@ public class DictService {
       if (ttl != 0) {
         return "Added: " + key + " = " + value + " with ttl " + ttl + " seconds";
       } else {
-        return "Added: " + key + " = " + value + "without ttl";
+        return "Added: " + key + " = " + value + " without ttl";
       }
     } catch (Exception e) {
       return "Fail to Add: " + key + " = " + value + " with ttl " + ttl;
