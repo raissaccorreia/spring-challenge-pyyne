@@ -22,7 +22,11 @@ public class DictController {
   @GetMapping("")
   public String getDict(@RequestParam(value = "word", required = true) String word) {
     try {
-      return dictService.getDict(word);
+      if (dictService.getDict(word) == null) {
+        return "Word: " + word + "not found";
+      } else {
+        return dictService.getDict(word);
+      }
     } catch (Exception e) {
         return "Error: " + e.getMessage();
     }

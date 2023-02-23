@@ -11,6 +11,10 @@ public class Kvt {
     this.stamp = stamp;
   }
 
+  public static long getCurrentTime() {
+    return System.currentTimeMillis();
+  }
+
   public boolean isExpired() {
     if (ttl == 0)
       return false;
