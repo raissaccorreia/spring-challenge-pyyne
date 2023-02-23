@@ -2,9 +2,11 @@ package com.hiring.api.pyyne.hiringdemo.dict;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.concurrent.TimeUnit;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 import com.hiring.api.pyyne.hiringdemo.service.DictService;
 
@@ -12,10 +14,10 @@ class DictTests {
 
     DictService dictService;
 
-     @BeforeEach
-     void setUp() throws Exception {
-         dictService = new DictService();
-     }
+    @BeforeEach
+    void setUp() throws Exception {
+        dictService = new DictService();
+    }
 
     // TimeUnit.SECONDS.sleep(3);
 
@@ -38,10 +40,13 @@ class DictTests {
 
     @Test
     @DisplayName("Get from Dict Service Layer with TTL")
-    void testGetFromDictServiceWithTTL() {
+    void testGetFromDictServiceWithTTL() throws InterruptedException {
         dictService.addToDict("name", "larry", 1);
         String getReturn = dictService.getDict("name");
         assertEquals("larry", getReturn);
+        TimeUnit.SECONDS.sleep(3);
+        getReturn = dictService.getDict("name");
+        assertEquals(null, getReturn);
     }
 
     @Test
