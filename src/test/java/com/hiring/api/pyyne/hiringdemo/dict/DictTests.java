@@ -4,26 +4,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.junit.jupiter.api.BeforeEach;
 
-import com.hiring.api.pyyne.hiringdemo.controller.DictController;
 import com.hiring.api.pyyne.hiringdemo.service.DictService;
 
 class DictTests {
 
     DictService dictService;
 
-    DictController dictController;
-
      @BeforeEach
      void setUp() throws Exception {
          dictService = new DictService();
-         dictController = new DictController(dictService);
      }
 
     // TimeUnit.SECONDS.sleep(3);

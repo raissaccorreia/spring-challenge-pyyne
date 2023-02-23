@@ -21,7 +21,11 @@ public class LifoController {
   @GetMapping("")
   public String getLifo() {
     try {
-      return lifoService.getLifo();
+      if (lifoService.getLifo() == null) {
+        return "Stack is empty";
+      } else {
+        return lifoService.getLifo();
+      }
     } catch (Exception e) {
         return "Error: " + e.getMessage();
     }

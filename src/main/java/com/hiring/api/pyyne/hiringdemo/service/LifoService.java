@@ -15,7 +15,7 @@ public class LifoService {
       topOfStack = topOfStack.getPrev();
       return answer;
     } else {
-      return "empty stack";
+      return null;
     }
   }
 
