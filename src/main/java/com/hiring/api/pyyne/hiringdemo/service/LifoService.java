@@ -11,6 +11,7 @@ public class LifoService {
 
   public String getLifo() {
     if (topOfStack != null) {
+      System.out.println("cheguei");
       String answer = topOfStack.getContent();
       topOfStack = topOfStack.getPrev();
       return answer;
@@ -20,8 +21,8 @@ public class LifoService {
   }
 
   public String addToLifo(String word) {
-      Node newNode = new Node(word, topOfStack);
-      topOfStack = newNode;
-      return newNode.getContent();
+    Node newNode = new Node(word, topOfStack);
+    topOfStack = newNode;
+    return newNode.getContent();
   }
 }

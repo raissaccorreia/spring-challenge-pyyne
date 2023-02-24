@@ -21,13 +21,14 @@ public class LifoController {
   @GetMapping("")
   public String getLifo() {
     try {
-      if (lifoService.getLifo() == null) {
+      String answer = lifoService.getLifo();
+      if (answer == null) {
         return "Stack is empty";
       } else {
-        return lifoService.getLifo();
+        return answer;
       }
     } catch (Exception e) {
-        return "Error: " + e.getMessage();
+      return "Error: " + e.getMessage();
     }
   }
 
@@ -36,7 +37,7 @@ public class LifoController {
     try {
       return lifoService.addToLifo(word);
     } catch (Exception e) {
-        return "Error: " + e.getMessage();
+      return "Error: " + e.getMessage();
     }
   }
 }
