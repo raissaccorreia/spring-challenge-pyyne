@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "64f3c390-9c0e-4aa1-aedb-ea67a6e617cc",
+		"name": "Hiring-Test-Spring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12997870"
+	},
+	"item": [
+		{
+			"name": "Add to Dict",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dict?key=\"name\"&value=\"larry\"&ttl=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dict"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "\"name\""
+						},
+						{
+							"key": "value",
+							"value": "\"larry\""
+						},
+						{
+							"key": "ttl",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dict",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dict?word=\"pizza\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dict"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "\"pizza\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove from Dict",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dict?word=\"pizza\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dict"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "\"pizza\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stack",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/lifo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lifo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add to Stack",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/lifo?word=\"hello\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lifo"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "\"hello\""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

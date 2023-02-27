@@ -11,7 +11,6 @@ public class LifoService {
 
   public String getLifo() {
     if (topOfStack != null) {
-      System.out.println("cheguei");
       String answer = topOfStack.getContent();
       topOfStack = topOfStack.getPrev();
       return answer;
